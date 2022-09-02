@@ -2,7 +2,29 @@
 // 3, 5 -> 243 (3⁵)
 // 2, 4 -> 16
 
-void Power
+// Ввод метода
+void Power (int a, int b)
+{
+    // ввод переменной результат
+    int result = a;
+    // запуск цикла на количество степеней раз
+    for (int i = 1; i < b; i++)
+    {
+        result = result * a;    
+    }
+    // Вывод результата
+    Console.WriteLine($"{a} в степени {b} равно {result}");
+}
+// Ввод данных
+Console.Write("Введите число: ");
+int a = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите степень: ");
+int b = Convert.ToInt32(Console.ReadLine());
+// Условие на случай степени равной 0
+if (b == 0) Console.WriteLine($"{a} в степени 0 равно 1");
+else Power(a, b);
+
+
 
 
 
