@@ -107,3 +107,67 @@
 // 5 9 2 3
 // 8 4 2 4
 // Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
+
+// Метод создания двумерного массива
+int[,] CreateRandom2dArray(int rows, int cols, int min, int max)
+{
+    int[,] array = new int[rows, cols];
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            array[i,j] = new Random().Next(min, max);
+        }
+    }
+    return array;
+}
+
+// Метод вывода массива на экран
+void Show2dArray (int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        Console.WriteLine();
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write(array[i,j] + " ");
+        }
+    }
+}
+
+// Метод поиска среднего значения по столбцам
+void AvgCols (int[,] array)
+{
+    //Вывод сообщения:
+    Console.WriteLine("Среднее значение элементов в столбцах:");
+    // Цикл в цикле перебора элементов. Идем по столбцам
+    for (int j = 0; j < array.GetLength(1); j++)
+    {
+        // Ввод переменной для суммы элементов в столбце
+        double sum = 0;
+        for (int i = 0; i < array.GetLength(0); i++)
+        {
+            sum = sum + array[i,j];
+        }
+        // Вывод расчета среднего с округлением до первого знака
+        Console.Write(Math.Round(sum/array.GetLength(0),1) + " ");
+     }
+    
+}
+
+// Ввод значений
+Console.Write("Input numb of rows: ");
+int rows = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input numb of cols: ");
+int cols = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input numb of min: ");
+int min = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input numb of max: ");
+int max = Convert.ToInt32(Console.ReadLine());
+// Создание массива с помощью метода
+int[,] array = CreateRandom2dArray(rows, cols, min, max);
+// Вывод массива на экран
+Show2dArray(array);
+Console.WriteLine();
+// Вывод средних значений
+AvgCols(array);
