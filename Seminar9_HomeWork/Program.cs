@@ -36,19 +36,35 @@ void PrintData(string prefix, string num)
 // M = 1; N = 15 -> 120
 // M = 4; N = 8. -> 30
 
-//Рекурсивный расчет суммы чисел от m до n
-int SumMN(int m, int n)
+// //Рекурсивный расчет суммы чисел от m до n
+// int SumMN(int m, int n)
+// {
+//        //точка остановки рекурсии     
+//     if (m >= n) return n;
+//        //рекурсивный расчет суммы и ее вывод 
+//     return m + SumMN(m+1,n);
+// }
+
+// // Ввод значений и вывод результата с проверкой условия
+// int m = ReadData("Введите число M: ");
+// int n = ReadData("Введите число N: ");
+// int res = (m < n) ? SumMN(m,n) : SumMN(n,m);
+// PrintData("Сумма чисел в заданном промежутке: ",res.ToString());
+
+// Задача 68: Напишите программу вычисления функции Аккермана с помощью рекурсии. Даны два неотрицательных числа m и n.
+// m = 2, n = 3 -> A(m,n) = 29
+
+// Метод расчета функции Аккермана
+int Akkerman(int m, int n)
 {
-       //точка остановки рекурсии     
-    if (m >= n) return n;
-       //рекурсивный расчет суммы и ее вывод 
-    return m + SumMN(m+1,n);
+    // Три условия функции Аккермана
+    if(m == 0) return n + 1;
+    else if(m > 0 && n ==0) return Akkerman(m-1,1);
+    else return Akkerman(m-1,Akkerman(m,n-1));
 }
 
-// Ввод значений и вывод результата с проверкой условия
-int m = ReadData("Введите число M: ");
-int n = ReadData("Введите число N: ");
-int res = (m < n) ? SumMN(m,n) : SumMN(n,m);
-PrintData("Сумма чисел в заданном промежутке: ",res.ToString());
-
-
+// Ввод данных и вывод результата
+int m = ReadData("Введите число m: ");
+int n = ReadData("Введите число n: ");
+int res = Akkerman(m,n);
+PrintData("Аккерман: ",res.ToString());
