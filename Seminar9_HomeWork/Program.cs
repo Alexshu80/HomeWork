@@ -67,4 +67,4 @@ int Akkerman(int m, int n)
 int m = ReadData("Введите число m: ");
 int n = ReadData("Введите число n: ");
 int res = Akkerman(m,n);
-PrintData("Аккерман: ",res.ToString());
+PrintData("Значение функции Аккермана для этих чисел: ",res.ToString());
